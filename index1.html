@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam Image Display</title>
+    <style>
+        #video {
+            width: 640px;
+            height: 480px;
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Webcam Image Display</h1>
+    <video id="video" autoplay></video>
+    <script>
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                var video = document.getElementById("video");
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function(err) {
+                console.log("An error occurred: " + err);
+            });
+    </script>
+</body>
+</html>
